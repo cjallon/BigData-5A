@@ -2,11 +2,12 @@
 
 ``docker run image_name`` : permet de créer et démarrer une nouvelle instance de l'image (conteneur) 
 
-si l'image n'existe pas, elle sera téléchargée à partir de docker hub
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              si l'image n'existe pas, elle sera téléchargée à partir de docker hub
                         
 ``docker run -d image_name:tag`` : permet de démarrer le conteneur en arrière plan 
 
-&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               tag : version; la valeur par défaut d'une image est lastest
 
 ``docker ps`` : permet de lister tous les conteneurs qui sont en cours d'exécution. Chaque conteneur dispose d'un identifiant unique
@@ -15,8 +16,8 @@ si l'image n'existe pas, elle sera téléchargée à partir de docker hub
 
  ``docker run -d -p 9999:80 nginx`` : Executer une image du serveur nginx
 
-&nbsp;
-                                      -p => redirection de port *port-extérieur-du-monteur-Docker*:*port-intérieur-du-conteneur*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              -p => redirection de port *port-extérieur-du-monteur-Docker*:*port-intérieur-du-conteneur*
 
 ``docker run --name <NAME> -d -p 8989:80 nginx`` : **--name** permet de donner un nom à mon conteneur
 
@@ -27,3 +28,4 @@ si l'image n'existe pas, elle sera téléchargée à partir de docker hub
 ``docker images`` : permet de lister toutes les images
 
 ``docker rmi -f <nom-image>`` : forcer la suppression d'une image ou d'un conteneur
+
