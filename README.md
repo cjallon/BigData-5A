@@ -17,7 +17,7 @@
  ``docker run -d -p 9999:80 nginx`` : Executer une image du serveur nginx
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              -p => redirection de port *port-extérieur-du-monteur-Docker*:*port-intérieur-du-conteneur*
+                              -p => redirection de port *port-extérieur-du-monteur-Docker* **:** *port-intérieur-du-conteneur*
 
 ``docker run --name <NAME> -d -p 8989:80 nginx`` : **--name** permet de donner un nom à mon conteneur
 
