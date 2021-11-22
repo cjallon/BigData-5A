@@ -76,9 +76,9 @@ Commands:
 ``docker volume inspect monVolume`` : inspection du volume
 
 ### Mapping volume
-Pour faire "mapping volume" : 
+_Pour faire "mapping volume" :_ 
 
-Créer dans C:\Users\jallo\Documents\docker\backupNginx un *index.html* 
+Créer dans **C:\Users\jallo\Documents\docker\backupNginx** un fichier *index.html* 
 
 ``docker run -dti -p 8081:80 -v C:\Users\jallo\Documents\docker\backupNginx:/usr/share/nginx/html/ --name myServWeb nginx``
 
