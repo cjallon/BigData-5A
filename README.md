@@ -31,7 +31,11 @@
 
 ``exec`` : permet d'executer une commande dans le conteneur démarré
 
-## Exercice 1, objectif : démarrer un conteneur MySQL et executer le client mysql
+### Exercice 1, objectif : démarrer un conteneur MySQL et executer le client mysql
 ``docker run --name <NAME> -e MYSQL_ROOT_PASSWORD=root -d mysql`` : démmarrer le conteneur MySQL
+
 ``docker exec -ti monServeurMYSQL mysql --password`` : exécuter le client mysql
+
+### Exercice 2, objectif : démarer un conteneur à partir de l'image ubuntu et puis installer java et exécuter un programme simple
+
 
