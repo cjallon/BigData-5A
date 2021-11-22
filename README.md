@@ -55,6 +55,19 @@ Si on veut utiliser vim comme éditeur ``apt-get install vim``.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-### Exercice : démarrer un conteneur nginx et changer le contenu du fichier index.html.
+### Exercice 3 : démarrer un conteneur nginx et changer le contenu du fichier index.html.
+Notion de volume :
+
+``docker volume``
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+``/usr/share/nginx/tml``
 
 
+Pour faire "mapping volume" ``docker run -dti -p 8080:80 -v /Users/syoucef/Desktop/dockerexample/mapage/:/usr/share/nginx/html/ --name myserverweeb nginx ``
