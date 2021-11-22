@@ -95,7 +95,13 @@ Une fois à l'intéreiur du conteneur, les volumes se trouvent dans le dossier :
 
 Solution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-docker-on-mac-os-x
 
-Récapitulatif :
+## Récapitulatif :
+``docker volume create mydata``
+``docker run -tid --name webvolume2 -p 8085:80 --mount source=mydata,target=/usr/share/nginx/html/ --name servRecap nginx``
 
-    ``docker volume create mesdonnees``
+
+### Gestion des variables d'environnement :
+
+``docker run -tid --name variableenvironnement --env MAVARIABLE="jallon2u" ubuntu:latest``
+Passer une variable d'environnemnt en ligne de commande : ``docker exec -ti variableenvironnement sh``
 
