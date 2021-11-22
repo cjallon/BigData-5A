@@ -103,5 +103,6 @@ Solution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-doc
 ### Gestion des variables d'environnement :
 
 ``docker run -tid --name variableenvironnement --env MAVARIABLE="jallon2u" ubuntu:latest``
+
 Passer une variable d'environnemnt en ligne de commande : ``docker exec -ti variableenvironnement sh``
 
