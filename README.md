@@ -31,10 +31,12 @@
 
 ``exec`` : permet d'executer une commande dans le conteneur démarré
 
+
 ### Exercice 1, objectif : démarrer un conteneur MySQL et executer le client mysql
 ``docker run --name <NAME> -e MYSQL_ROOT_PASSWORD=root -d mysql`` : démarrer le conteneur MySQL
 
 ``docker exec -ti <NAME> mysql --password`` : exécuter le client mysql
+
 
 ### Exercice 2, objectif : démarer un conteneur à partir de l'image ubuntu et puis installer java et exécuter un programme simple
 ``docker run -it ubuntu bash``
@@ -43,3 +45,10 @@ Une fois à l'intérieur du conteneur, on peut installer les outils dont on a be
 Si on veut installer par exemple Java, on procède de la façon suivante : on met d'abord à jour ``apt-get update`` et puis ``apt-get install java``. 
 
 Si on veut utiliser vim comme éditeur ``apt-get install vim``.
+
+``docker logs id_conteneur`` : permet d'avoir les logs d'un contenur
+
+
+### Exercice : démarrer un conteneur nginx et changer le contenu du fichier index.html.
+
+
