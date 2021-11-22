@@ -55,6 +55,8 @@ Si on veut utiliser vim comme éditeur ``apt-get install vim``.
 
 ``docker logs id_conteneur`` : permet d'avoir les logs d'un contenur
 
+Html à modifier : ``/usr/share/nginx/html``
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### Exercice 3 : démarrer un conteneur nginx et changer le contenu du fichier index.html.
@@ -69,10 +71,16 @@ Commands:
   prune       Remove all unused local volumes
   rm          Remove one or more volumes
 
-``/usr/share/nginx/tml``
+``docker volume create monVolume`` : création du volume
+
+``docker volume inspect monVolume`` : inspection du volume
 
 ### Mapping volume
-Pour faire "mapping volume" : ``docker run -dti -p 8081:80 -v C:\Users\jallo\Documents\docker\backupNginx:/usr/share/nginx/html/ --name myServWeb nginx``
+Pour faire "mapping volume" : 
+
+Créer dans C:\Users\jallo\Documents\docker\backupNginx un *index.html* 
+
+``docker run -dti -p 8081:80 -v C:\Users\jallo\Documents\docker\backupNginx:/usr/share/nginx/html/ --name myServWeb nginx``
 
 ou 
 
