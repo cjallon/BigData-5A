@@ -1,16 +1,16 @@
 # Introduction à Docker
 
-docker run image_name : permet de créer et démarrer une nouvelle instance de l'image (conteneur)
+docker run image_name : permet de créer et démarrer une nouvelle instance de l'image (conteneur) &nbsp;
                         si l'image n'existe pas, elle sera téléchargée à partir de docker hub
                         
-docker run -d image_name:tag : permet de démarrer le conteneur en arrière plan
+docker run -d image_name:tag : permet de démarrer le conteneur en arrière plan &nbsp;
                               tag : version; la valeur par défaut d'une image est lastest
 
 docker ps : permet de lister tous les conteneurs qui sont en cours d'exécution. Chaque conteneur dispose d'un identifiant unique
 
 docker ps a : permet de lister tous les conteneurs avec leurs status (Up, Exited, Created)
 
-Executer une image du serveur nginx : docker run -d -p 9999:80 nginx
+Executer une image du serveur nginx : docker run -d -p 9999:80 nginx &nbsp;
                                       -p => redirection de port *port-extérieur-du-monteur-Docker*:*port-intérieur-du-conteneur*
 
 ``docker run --name <NAME> -d -p 8989:80 nginx`` : **--name** permet de donner un nom à mon conteneur
