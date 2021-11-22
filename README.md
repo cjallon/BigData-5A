@@ -21,6 +21,8 @@
 
 ``docker run --name <NAME> -d -p 8989:80 nginx`` : **--name** permet de donner un nom à mon conteneur
 
+``docker start <hash-du-conteneur|name-du-conteneur>`` : permet de démarrer un conteneur
+
 ``docker stop <hash-du-conteneur|name-du-conteneur>`` : permet d'arrêter un conteneur
 
 ``docker rm <hash-du-conteneur>`` : permet de supprimer le conteneur, 
@@ -69,5 +71,10 @@ Commands:
 
 ``/usr/share/nginx/tml``
 
+### Mapping volume
+Pour faire "mapping volume" : ``docker run -dti -p 8081:80 -v C:\Users\jallo\Documents\docker\backupNginx:/usr/share/nginx/html/ --name myServWeb nginx``
 
-Pour faire "mapping volume" ``docker run -dti -p 8080:80 -v /Users/syoucef/Desktop/dockerexample/mapage/:/usr/share/nginx/html/ --name myserverweeb nginx ``
+ou 
+
+``docker run -tid --name webvolume -p 8082:80 --mount source=monvolume,target=/usr/share/nginx/html/ nginx``
+
