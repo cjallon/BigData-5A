@@ -1,6 +1,7 @@
 # Introduction à Docker
 
 ``docker run image_name`` : permet de créer et démarrer une nouvelle instance de l'image (conteneur) 
+
 si l'image n'existe pas, elle sera téléchargée à partir de docker hub
                         
 ``docker run -d image_name:tag`` : permet de démarrer le conteneur en arrière plan 
