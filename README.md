@@ -86,3 +86,16 @@ ou
 
 ``docker run -tid --name webvolume -p 8082:80 --mount source=monvolume,target=/usr/share/nginx/html/ nginx``
 
+
+Pour accéder aux volumes (sous mac & windows) :
+
+``docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh``
+
+Une fois à l'intéreiur du conteneur, les volumes se trouvent dans le dossier : ``/var/lib/docker/volumes/``
+
+Solution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-docker-on-mac-os-x
+
+Récapitulatif :
+
+    ``docker volume create mesdonnees``
+
