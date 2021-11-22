@@ -37,5 +37,9 @@
 ``docker exec -ti monServeurMYSQL mysql --password`` : exécuter le client mysql
 
 ### Exercice 2, objectif : démarer un conteneur à partir de l'image ubuntu et puis installer java et exécuter un programme simple
+``docker run -it ubuntu bash``
+Une fois à l'intérieur du conteneur, on peut installer les outils dont on a besoin (avec les commandes ubuntu).
 
+Si on veut installer par exemple Java, on procède de la façon suivante : on met d'abord à jour ``apt-get update`` et puis ``apt-get install java``. 
 
+Si on veut utiliser vim comme éditeur ``apt-get install vim``.
