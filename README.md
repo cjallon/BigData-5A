@@ -26,7 +26,7 @@
 ``docker rm <hash-du-conteneur>`` : permet de supprimer le conteneur, 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    ** /!\Attention/!\ ** on ne peut pas supprimer un conteneur en cours d'exécution, il faut le stopper avant
+                                    **Attention** on ne peut pas supprimer un conteneur en cours d'exécution, il faut le stopper avant
 
 ``docker images`` : permet de lister toutes les images
 
