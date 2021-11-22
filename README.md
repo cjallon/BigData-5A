@@ -106,3 +106,8 @@ Solution ici : https://stackoverflow.com/questions/38532483/where-is-var-lib-doc
 
 Passer une variable d'environnemnt en ligne de commande : ``docker exec -ti variableenvironnement sh``
 
+On créé un fichier **variables.lst** avec vim
+
+On passe un ensemble de variables d'environnement sauvegardé dans le fichier variables.lst :
+
+``docker run -tid --name fichiervariableenvironnement --env-file variables.lst ubuntu:latest``
