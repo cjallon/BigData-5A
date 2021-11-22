@@ -7,7 +7,7 @@
                         
 ``docker run -d image_name:tag`` : permet de démarrer le conteneur en arrière plan 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               tag : version; la valeur par défaut d'une image est lastest
 
 ``docker ps`` : permet de lister tous les conteneurs qui sont en cours d'exécution. Chaque conteneur dispose d'un identifiant unique
@@ -16,7 +16,7 @@
 
  ``docker run -d -p 9999:80 nginx`` : Executer une image du serveur nginx
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               -p => redirection de port *port-extérieur-du-monteur-Docker* **:** *port-intérieur-du-conteneur*
 
 ``docker run --name <NAME> -d -p 8989:80 nginx`` : **--name** permet de donner un nom à mon conteneur
@@ -25,7 +25,7 @@
 
 ``docker rm <hash-du-conteneur>`` : permet de supprimer le conteneur, 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 /!\Attention/!\ on ne peut pas supprimer un conteneur en cours d'exécution, il faut le stopper avant
 
 ``docker images`` : permet de lister toutes les images
