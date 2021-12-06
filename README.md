@@ -281,3 +281,7 @@ Dans notre projet, nous utilisons les méthodes suivantes:
   findByDescription(description): permet de faire une recherche sur la collection produit pour trouver un objet possédant une description identique à description
 ```
 
+Ensuite on remplit ``application.properties`` comme suit :
+
+```spring.data.mongodb.host=monconteneurmongo
+spring.data.mongodb.database=produit```
