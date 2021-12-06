@@ -111,3 +111,22 @@ On créé un fichier **variables.lst** avec vim
 On passe un ensemble de variables d'environnement sauvegardé dans le fichier variables.lst :
 
 ``docker run -tid --name fichiervariableenvironnement --env-file variables.lst ubuntu:latest``
+
+
+### Définir sa propre image Docker :
+
+    ``docker commit``
+
+Exemple : partir d'une image ubuntu, on va installer python et vim et ajouter queqlues variables d'environnement sauvegardées dans un fichier.
+
+1 - On commence par créer un fichier env.lst (on définit autant de variables souhaitées)
+
+2 - Pour ajouter ces variables d'environnement ``docker run --name monconteneurvariables -tdi --env-file env.lst ubuntu``
+
+3 - Pour installer python et vim, on rentre à l'intérieur du conteneur ``docker exec -ti monconteneurvariables sh``
+
+Pour installer python et vim : ``apt-get update``, ``apt-get install python`` et ``apt-get install vim``
+
+4 - On quite le conteneur ``exit``
+
+5 - Pour créer une image à partir de ce conteneur ``docker commit -m "création d'une image ubuntu augumentée" id_conteur nom_notre_image``
