@@ -178,11 +178,13 @@ A l'aide d'Intellij Idea on va réaliser un projet Spring. On va utiliser les de
 
 Dans un premier temps nous allons créer une interface implémentant **MongoRepository** que l'on va appeler Produit :
 
-  package com.example.deeplearning;
+```java
+package com.example.deeplearning;
 
-  import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-  public interface ProduitInterface extends MongoRepository<Produit, String> {
+public interface ProduitInterface extends MongoRepository<Produit, String> {
 
-      Produit findByDescription(String description);
-  }
+    Produit findByDescription(String description);
+}
+```
