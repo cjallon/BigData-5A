@@ -130,3 +130,15 @@ Pour installer python et vim : ``apt-get update``, ``apt-get install python`` et
 4 - On quite le conteneur ``exit``
 
 5 - Pour créer une image à partir de ce conteneur ``docker commit -m "création d'une image ubuntu augumentée" id_conteur nom_notre_image``
+
+
+
+### Dockerfile
+
+1 - On va créer un fichier Dockerfile 
+2 - On part d'une image existante (la plus petite est alpine), copier éventuellement un programme et l'exécuter.
+
+        FROM openjdk
+        COPY Application.class Application.class
+        CMD ["java", "Application"]
+
