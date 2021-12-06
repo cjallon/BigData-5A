@@ -269,6 +269,15 @@ public class ServiceProduit {
     public Collection<Produit> get() {
         return monProduit.findAll();
     }
-
 }
 ```
+
+Dans ce contrôleur on utilise du GetMapping (GET). De plus, afin de pouvoir interagir avec la base de données MongoDB, on va devoir instancier ProduitInterface que l'on a créé précédemment.
+
+Dans notre projet, nous utilisons les méthodes suivantes:
+```
+  findAll(): permet de renvoyer l'intégralité des objets dans la collection produit
+  insert(Produit p): permet d'insérer un nouvel objet dans la base de données
+  findByDescription(description): permet de faire une recherche sur la collection produit pour trouver un objet possédant une description identique à description
+```
+
