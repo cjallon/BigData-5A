@@ -136,9 +136,53 @@ Pour installer python et vim : ``apt-get update``, ``apt-get install python`` et
 ### Dockerfile
 
 1 - On va créer un fichier Dockerfile 
+
+FROM : permet de définir l'image source
+CMD : la commande par défautt lors de l'exécution du conteneur
+EXPOSE : permet de définir le port d'écoute par défaut
+RUN : permet d'exécuter des commandes à l'intérieur du conteneur
+ADD : permet d'ajouter des fichier dans le conteneur
+VOLUME : permet de définir les volumes utilisables
+
 2 - On part d'une image existante (la plus petite est alpine), copier éventuellement un programme et l'exécuter.
 
-        FROM openjdk
-        COPY Application.class Application.class
-        CMD ["java", "Application"]
+  FROM openjdk
+  COPY Application.class Application.class
+  CMD ["java", "Application"]
+  
+#### Exemple pour Python :
 
+  FROM ubuntu
+  COPY application.py application.py
+  RUN apt-get update
+  RUN apt-get install python -y
+  CMD ["python", "application.py"]
+
+
+
+
+
+# MongoDB
+
+
+
+
+
+# Exercice à rendre
+
+*Développer un micro-service qui utilise pour la persistance des données MongoDB et créer une image Docker de votre service.*
+
+##### Étape 1 : Création du service
+
+A l'aide d'Intellij Idea on va réaliser un projet Spring. On va utiliser les deux dépendances suivantes : **Spring Web** et **MongoDB**.
+
+Dans un premier temps nous allons créer une interface implémentant **MongoRepository** que l'on va appeler Produit :
+
+  package com.example.deeplearning;
+
+  import org.springframework.data.mongodb.repository.MongoRepository;
+
+  public interface ProduitInterface extends MongoRepository<Produit, String> {
+
+      Produit findByDescription(String description);
+  }
