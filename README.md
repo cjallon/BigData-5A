@@ -188,3 +188,87 @@ public interface ProduitInterface extends MongoRepository<Produit, String> {
     Produit findByDescription(String description);
 }
 ```
+
+Classe produit :
+```java
+package com.example.deeplearning;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import java.io.Serializable;
+
+@Document(collection = "produit")
+public class Produit implements Serializable {
+
+    @Id
+    private String id;
+
+    @Field("nom")
+    private String nom;
+
+    @Field("prix")
+    private double prix;
+
+    public Produit(String id, String nom, double prix){
+        this.id = id;
+        this.nom = nom;
+        this.prix = prix;
+    }
+}
+```
+
+**@Document(collection = "produit")** : correspond à la collection utilisée
+**@Id** : id du document, généré automatiquement
+**@Field("nom")** : indication que l'attribut est converti en tant que clé/vlaleur nommée **nom** dans les objets de la collecton produit de MongoDB.
+
+L'étape suivante consiste à réaliser le Mapping qui va s'occuper de répondre à nos requêtes HTTP. Le contrôleur/service s'appelera ServiceProduit :
+
+```java
+package com.example.bigdata;
+
+import com.example.bigdata.Produit;
+import com.example.bigdata.ProduitInterface;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
+
+@RestController
+@RequestMapping("/produit")
+public class ServiceProduit {
+    private final ProduitInterface monProduit;
+
+    public ServiceProduit(ProduitInterface monProduit){
+        this.monProduit = monProduit;
+
+    }
+
+    @GetMapping("/{description}/{prix}")
+    public Produit add(@PathVariable String description, @PathVariable double prix)
+    {
+        if(!description.isEmpty())
+        {
+            return monProduit.insert(new Produit(null, description, prix));
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    @GetMapping("/{description}")
+    public Produit getById(@PathVariable String description )
+    {
+        return monProduit.findByDescription((description));
+    }
+
+    @GetMapping
+    public Collection<Produit> get() {
+        return monProduit.findAll();
+    }
+
+}
+```
