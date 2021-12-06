@@ -115,7 +115,7 @@ On passe un ensemble de variables d'environnement sauvegardé dans le fichier va
 
 ### Définir sa propre image Docker :
 
-    ``docker commit``
+``docker commit``
 
 Exemple : partir d'une image ubuntu, on va installer python et vim et ajouter queqlues variables d'environnement sauvegardées dans un fichier.
 
