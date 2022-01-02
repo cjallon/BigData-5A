@@ -179,27 +179,52 @@ A l'aide d'Intellij Idea on va réaliser un projet Spring. On va utiliser les de
 Dans un premier temps nous allons créer une interface implémentant **MongoRepository** que l'on va appeler Produit :
 
 ```java
-package com.example.deeplearning;
+package com.example.bigdata.produit;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProduitInterface extends MongoRepository<Produit, String> {
-
-    Produit findByDescription(String description);
+    Produit findByNom(String nom);
 }
 ```
 
 Classe produit :
 ```java
-package com.example.deeplearning;
+package com.example.bigdata.produit;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.io.Serializable;
 
 @Document(collection = "produit")
-public class Produit implements Serializable {
+public class Produit implements Serializable{
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
 
     @Id
     private String id;
@@ -209,6 +234,8 @@ public class Produit implements Serializable {
 
     @Field("prix")
     private double prix;
+
+    public Produit(){}
 
     public Produit(String id, String nom, double prix){
         this.id = id;
@@ -225,10 +252,9 @@ public class Produit implements Serializable {
 L'étape suivante consiste à réaliser le Mapping qui va s'occuper de répondre à nos requêtes HTTP. Le contrôleur/service s'appelera ServiceProduit :
 
 ```java
-package com.example.bigdata;
+package com.example.bigdata.produit;
 
-import com.example.bigdata.Produit;
-import com.example.bigdata.ProduitInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -246,12 +272,12 @@ public class ServiceProduit {
 
     }
 
-    @GetMapping("/{description}/{prix}")
-    public Produit add(@PathVariable String description, @PathVariable double prix)
+    @GetMapping("/{nom}/{prix}")
+    public Produit add(@PathVariable String nom, @PathVariable double prix)
     {
-        if(!description.isEmpty())
+        if(!nom.isEmpty())
         {
-            return monProduit.insert(new Produit(null, description, prix));
+            return monProduit.insert(new Produit(null,nom, prix));
         }
         else
         {
@@ -259,10 +285,10 @@ public class ServiceProduit {
         }
     }
 
-    @GetMapping("/{description}")
-    public Produit getById(@PathVariable String description )
+    @GetMapping("/{nom}")
+    public Produit getById(@PathVariable String nom )
     {
-        return monProduit.findByDescription((description));
+        return monProduit.findByNom((nom));
     }
 
     @GetMapping
@@ -270,18 +296,21 @@ public class ServiceProduit {
         return monProduit.findAll();
     }
 }
+
 ```
 
 Dans ce contrôleur on utilise du GetMapping (GET). De plus, afin de pouvoir interagir avec la base de données MongoDB, on va devoir instancier ProduitInterface que l'on a créé précédemment.
 
 Dans notre projet, nous utilisons les méthodes suivantes:
 ```
-  findAll(): permet de renvoyer l'intégralité des objets dans la collection produit
-  insert(Produit p): permet d'insérer un nouvel objet dans la base de données
-  findByDescription(description): permet de faire une recherche sur la collection produit pour trouver un objet possédant une description identique à description
+  findAll(): retourne tous les objets qui se trouvent dans la collection produit
+  insert(Produit p): ajoute un nouvel objet dans notre base de données
+  findByNom(String **nom**): recherche dans la collection produit pour trouver un objet possédant un nom identique à **nom**
 ```
 
 Ensuite on remplit ``application.properties`` comme suit :
 
 ```spring.data.mongodb.host=monconteneurmongo
 spring.data.mongodb.database=produit```
+
+La première ligne nous permet d'indiquer le nom du conteneur et la seconde le nom de la base de donnée.
