@@ -320,3 +320,32 @@ La première ligne nous permet d'indiquer le nom du conteneur et la seconde le n
 Notre service est désormais près à fonctionner. Nous pouvons effectuer ``clean`` et ``install`` pour générer notre jar exécutable, s'appellera **bigData.jar** (nom qu'on choisi en le mettant dans le pom.xml).
 
 
+##### Étape 2 : Création du Dockerfile
+
+Dans cette étape nous allos créer un Dockerfile, dans le projet java, qui va nous servir à créer l'image qui va contenir notre service :
+```
+FROM openjdk:14.0.2-jdk
+ADD target/bigData.jar bigData.jar
+CMD ["java", "-jar", "bigData.jar"]
+EXPOSE 8080
+```
+
+##### Étape 3 : Création de l'image
+
+Dans un premier temps on lance un conteneur MongoDB grâce à la commande suivante: 
+``docker run --name mongodb -d -p 27017:27017 mongo``
+Le port d'écoute de MongoDB est alors le **27017**.
+
+Par la suite nous allons build l'image de notre service grâce au Dockerfile créé précédemment: 
+``docker build -t servicemongodb .`` => L'image que l'on créé aura donc pour nom: servicemongodb. 
+
+Ensuite on lance un conteneur de notre service, et on spécifie que l'on va faire un lien avec le conteneur MongoDB: 
+``docker run -p 8181:8080 --link monconteneurmongo:monconteneurmongo -d servicemongodb``
+
+On va pouvoir maintenant retrouver notre service à l'adresse : http://localhost:8181/produit 
+
+Sur ce service nous pourrons réaliser différentes requêtes :
+
+``POST`` http://localhost/produit/{nom}/{prix} : ajoute un nouveau produit avec un nom égal *nom* et un prix égal à *prix* dans notre base de données
+``GET`` http://localhost/produit/{nom} : retourne l'objet correspondant à *nom*
+``GET`` http://localhost/produit : retourne l'ensemble des produits de la collection
