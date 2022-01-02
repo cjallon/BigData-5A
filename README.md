@@ -310,7 +310,13 @@ Dans notre projet, nous utilisons les méthodes suivantes:
 
 Ensuite on remplit ``application.properties`` comme suit :
 
-```spring.data.mongodb.host=monconteneurmongo
-spring.data.mongodb.database=produit```
+```
+spring.data.mongodb.host=monconteneurmongo
+spring.data.mongodb.database=produit
+```
 
 La première ligne nous permet d'indiquer le nom du conteneur et la seconde le nom de la base de donnée.
+
+Notre service est désormais près à fonctionner. Nous pouvons effectuer ``clean`` et ``install`` pour générer notre jar exécutable, s'appellera **bigData.jar** (nom qu'on choisi en le mettant dans le pom.xml).
+
+
