@@ -1,4 +1,4 @@
-On trouvera le l'image créée dans le cadre de l'exercice donné à l'adresse suivante :
+On trouvera l'image créée dans le cadre de l'exercice donné à l'adresse suivante :
 
 https://hub.docker.com/r/cjallon/syoucef-big-data-5a
 
