@@ -1,3 +1,10 @@
+On trouvera le l'image créée dans le cadre de l'exercice donné à l'adresse suivante :
+
+https://hub.docker.com/r/cjallon/syoucef-big-data-5a
+
+#####################################################################################
+
+
 # Introduction à Docker
 
 ``docker run image_name`` : permet de créer et démarrer une nouvelle instance de l'image (conteneur) 
