@@ -336,16 +336,32 @@ Dans un premier temps on lance un conteneur MongoDB grâce à la commande suivan
 ``docker run --name mongodb -d -p 27017:27017 mongo``
 Le port d'écoute de MongoDB est alors le **27017**.
 
-Par la suite nous allons build l'image de notre service grâce au Dockerfile créé précédemment: 
+Par la suite nous allons build l'image de notre service grâce au Dockerfile créé précédemment:
+
 ``docker build -t servicemongodb .`` => L'image que l'on créé aura donc pour nom: servicemongodb. 
 
 Ensuite on lance un conteneur de notre service, et on spécifie que l'on va faire un lien avec le conteneur MongoDB: 
+
 ``docker run -p 8181:8080 --link monconteneurmongo:monconteneurmongo -d servicemongodb``
 
 On va pouvoir maintenant retrouver notre service à l'adresse : http://localhost:8181/produit 
 
-Sur ce service nous pourrons réaliser différentes requêtes :
+**Sur ce service nous pourrons réaliser différentes requêtes :**
 
 ``POST`` http://localhost/produit/{nom}/{prix} : ajoute un nouveau produit avec un nom égal *nom* et un prix égal à *prix* dans notre base de données
+
 ``GET`` http://localhost/produit/{nom} : retourne l'objet correspondant à *nom*
+
 ``GET`` http://localhost/produit : retourne l'ensemble des produits de la collection
+
+
+##### Étape 4 : Upload de l'image sur Docker HUB
+
+Pour pousser l'image sur Docker Hub nous utilisons les deux commandes suivantes :
+
+``docker tag service cjallon/syoucef-big-data-5a`` : fait le lien entre l'image servicemongodb et le Repository cjallon/syoucef-big-data-5a
+
+``docker push cjallon/syoucef-big-data-5a`` : envoie la dernière version de notre image sur Docker Hub
+
+
+
